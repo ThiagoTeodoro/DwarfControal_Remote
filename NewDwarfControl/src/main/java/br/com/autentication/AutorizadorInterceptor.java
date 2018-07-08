@@ -22,7 +22,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  */
 public class AutorizadorInterceptor extends HandlerInterceptorAdapter {	
 	
-	private String UrlBase = "https://dwarfcontrol.herokuapp.com/";
+	private String UrlBase = "https://localhost:8080/NewDwarfControl/";
 
 	@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object controller) throws Exception {	
