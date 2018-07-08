@@ -1,0 +1,115 @@
+table tr{
+    text-align: center;
+}
+
+
+#PaginaLogin{
+    background-image: url("../img/background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#Login{
+    padding: 5px;        
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -150px;
+    width: 400px;
+    height: 360px;
+    border-radius: 15px; /* Arrendodamento de Borda */
+    border-color: rgb(12, 54, 61);
+    border: 3px solid; /* Espessura da Borda */   
+    background-color: white;
+    opacity: 0.80;
+}
+
+#Login img{
+    position: relative;
+    margin-top: 5px;
+    margin-left: -5px;
+}
+
+#Login h4{
+    position: relative;
+    top: 10px;
+    width: 400px;
+    text-align: center;
+}
+
+#Logar{    
+    float: right;
+}
+
+#Topo{  
+    background-color: rgb(0,59,111);   
+    margin-bottom: 0px;  
+    height: 100px;
+}
+
+#tabelaTopo{
+    width: 100%;
+    color: white;
+}
+
+#Menu{
+    position:  absolute;    
+    height: calc(100% - 151px);
+    width: 200px;    
+}
+
+#menuBotoes{
+    margin-top: 15px;
+    margin-right: 5px;
+}
+
+#menuBotoes li{
+    margin-bottom: 5px;
+}
+
+#Tela{
+    position: absolute;    
+    height: calc(100% - 151px);
+    width: calc(100% - 200px);
+    margin-left: 200px;
+    overflow-y: visible;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+#boxPesquisaUsuarios{
+    padding: 5px;
+    margin-left: 30px;
+}
+
+#boxPesquisaUsuarios button{
+    margin-left: 5px;
+}
+
+#boxExibeUsuarios{
+    position: absolute;
+    height: 80%;
+    overflow: auto;
+}
+
+#formOperacoesContas button{
+     margin-left: 5px;
+     margin-right: 5px;
+}
+
+#formOperacoesContas input{
+     margin-left: 5px;
+     margin-right: 5px;
+}
+
+
+#exibirContas {
+    position: absolute;
+    width: 95%;
+    height: 60%;
+    overflow: auto;
+}

@@ -1,0 +1,28 @@
+<h4>Importar Arquivo CSV Banco Itáu</h4>
+
+<br/>
+<br/>
+
+<div class="alert alert-info" ng-show="exibirCarregando">
+	<h4>Carregando...</h4>
+</div>
+<div class="alert alert-danger" ng-show="menssagem.erro">
+	{{menssagem.descricao}}<br/>
+	{{menssagem.excessao}}
+</div>   
+<div class="alert alert-success" ng-show="menssagem.sucesso">
+	{{menssagem.descricao}}
+</div>   
+
+<form enctype="multipart/form-data" name="formInportarCSV">
+	<div class="form-group">
+		<label> Selecionar arquivo </label>
+		<input type="file" class="form-control"  fileread="file" accept=".txt" required>		
+	</div>
+	<div class="form-group">
+		<label>Conta de Importação</label>
+		<select ng-options="conta as (conta.Descricao + '-' + conta.Tipo) for conta in listaContas track by conta.Id" class="form-control" ng-model="conta" required>	
+		</select>
+	</div>	
+	<button class="btn btn-info" ng-disabled="formInportarCSV.$invalid" ng-click="enviarArquivo(file, conta)">Importar</button>	
+</form>	

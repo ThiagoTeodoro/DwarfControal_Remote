@@ -1,0 +1,74 @@
+<html ng-app="Dwarf_Control">
+<head>
+
+	<!-- 
+		Não foi preciso volocar ../ antes do caminho pois o 
+		Rauter do Spring deixa tudo em /efetuarLogin e em 
+		relação a este caminho, não precisamos voltar pastas
+	-->
+	<title>.: Dwarf Control :.</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control"   content="no-cache" />
+	<script src="bibliotecas/angular.js"></script>
+	<script src="bibliotecas/angular-route.js"></script>
+	<script src="bibliotecas/angular-locale_pt-br.js"></script>
+	<script src="js/modulos/Dwarf_Control_Module.js"></script>
+	<script src="js/configs/configRoutes.js"></script>
+	<script src="js/directives/fileDeadDirective.js"></script>
+	<script src="js/controllers/internoController.js"></script>
+	<script src="js/controllers/administrarUsuariosController.js"></script>
+	<script src="js/controllers/perfilController.js"></script>
+	<script src="js/controllers/limiteController.js"></script>
+	<script src="js/controllers/quandoPagarController.js"></script>
+	<script src="js/controllers/contasController.js"></script>
+	<script src="js/controllers/uploadcsvController.js"></script>
+	<script src="js/controllers/lancamentosController.js"></script>
+	<script src="js/services/internoService.js"></script>
+	<script src="js/services/administrarUsuariosService.js"></script>
+	<script src="js/services/perfilService.js"></script>
+	<script src="js/services/limiteService.js"></script>
+	<script src="js/services/quandoPagarService.js"></script>
+	<script src="js/services/contasService.js"></script>
+	<script src="js/services/uploadcsvService.js"></script>
+	<script src="js/services/lancamentosService.js"></script>
+	<!-- 
+		Cuidado o JQUERY DEVE SER IMPORTADO PRIMEIRO QUE BOOTSTRAP.JS SE NÂO UM NÂO RECONHECE O OUTRO!
+	-->
+	<script src="bibliotecas/jquery-3.3.1.js"></script>
+	<script src="bibliotecas/bootstrap.js"></script>
+	<link rel="stylesheet" href="css/todoCss.css">
+	<link rel="stylesheet" href="bibliotecas/bootstrap.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+</head>
+<!-- O Controller do ANGULAR SÓ ATUA DAQUI PARA FRENTE!! Lá na Index Não-->
+<!-- Como o SPRING MVC não vai mostrar a REAL ROTA temos que chamar esse controler
+ apenas de forma manual os proximos vão pegar -->
+<body ng-controller="internoController">	
+	<div id="Topo" class="jumbotron">
+ 		<table id="tabelaTopo">
+ 			<tr>
+ 				<td>Gerenciamento Financeiro</td>
+ 				<td>Bem Vindo : {{UsuarioLogado.Nome}}</td>
+ 				<td><a href="Sair">Sair</a></td>
+ 			</tr>
+ 		</table>	
+ 	</div>
+ 	<div id="Menu">
+ 		<ul id="menuBotoes">
+ 			<a href="#!/Perfil"><li class="form-control btn btn-primary">Perfil</li></a>
+ 			<a href="#!/Lancamentos"><li class="form-control btn btn-primary">Lançamentos</li></a>
+ 			<a href="#!/Contas"><li class="form-control btn btn-primary">Contas</li></a>
+ 			<a href="#!/UploadCSV"><li class="form-control btn btn-primary">Arquivo CSV</li></a>
+ 			<a href="#!/Limites"><li class="form-control btn btn-primary">Limites</li></a>
+ 			<a href="#!/QuandoPagar"><li class="form-control btn btn-primary">Quando Pagar</li></a>
+ 			<a href="#!/AdministrarUsuarios" ng-show="UsuarioLogado.Nivel == 'ADMINISTRADOR'"><li class="form-control btn btn-primary">Admin Usuarios</li></a>
+ 			
+ 		</ul>	
+ 	</div>	
+ 	<div id="Tela" ng-view>
+
+ 	</div>	
+</body>
+</html>
