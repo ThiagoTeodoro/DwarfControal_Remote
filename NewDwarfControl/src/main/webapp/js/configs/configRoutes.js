@@ -29,9 +29,10 @@ angular.module('Dwarf_Control').config(['$routeProvider',function($routeProvider
 		templateUrl: 'views/interno/lancamentos/lancamentos.html',
 		controller: 'lancamentosController'		
 	})
-
-
-
+	.when('/Relatorios', {		
+		templateUrl: 'views/interno/relatorios/relatorios.html',
+		controller: 'relatoriosController'		
+	})
 
 
 

@@ -12,6 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+
 /*
  * Classe Entidade Usuário
  * 
@@ -19,26 +22,40 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_usuarios")
+@JsonPropertyOrder({
+	"Id",
+	"Email",
+	"Senha",
+	"Nome",
+	"Nivel",
+	"Data_Hora_Criacao"
+})
 public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto Incremento no Banco
+	@JsonProperty("Id")
 	private Long Id;
 	
-	@Column(nullable=false, unique=true)	
+	@Column(nullable=false, unique=true)
+	@JsonProperty("Email")
 	private String Email;
 	
 	@Column(nullable=false)
+	@JsonProperty("Senha")
 	private String Senha;
 	
 	@Column(nullable=false)
+	@JsonProperty("Nome")
 	private String Nome;
 	
 	@Column(nullable=false)
+	@JsonProperty("Nivel")
 	private String Nivel;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable=false)
+	@JsonProperty("Data_Hora_Criacao")
 	private Calendar DataHora_Criacao;	
 	
 	/**

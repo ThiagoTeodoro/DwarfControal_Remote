@@ -1,1 +1,1 @@
-angular.module('Dwarf_Control', ['ngRoute']);
+angular.module('Dwarf_Control', ['ngRoute', 'chart.js']);

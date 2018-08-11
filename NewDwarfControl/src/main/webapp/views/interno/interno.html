@@ -2,7 +2,7 @@
 <head>
 
 	<!-- 
-		Não foi preciso volocar ../ antes do caminho pois o 
+		Não foi preciso colocar ../ antes do caminho pois o 
 		Rauter do Spring deixa tudo em /efetuarLogin e em 
 		relação a este caminho, não precisamos voltar pastas
 	-->
@@ -13,6 +13,8 @@
 	<script src="bibliotecas/angular.js"></script>
 	<script src="bibliotecas/angular-route.js"></script>
 	<script src="bibliotecas/angular-locale_pt-br.js"></script>
+	<script src="bibliotecas/Chart.js"></script>
+	<script src="bibliotecas/angular-chart.min.js"></script>
 	<script src="js/modulos/Dwarf_Control_Module.js"></script>
 	<script src="js/configs/configRoutes.js"></script>
 	<script src="js/directives/fileDeadDirective.js"></script>
@@ -24,6 +26,7 @@
 	<script src="js/controllers/contasController.js"></script>
 	<script src="js/controllers/uploadcsvController.js"></script>
 	<script src="js/controllers/lancamentosController.js"></script>
+	<script src="js/controllers/relatoriosController.js"></script>
 	<script src="js/services/internoService.js"></script>
 	<script src="js/services/administrarUsuariosService.js"></script>
 	<script src="js/services/perfilService.js"></script>
@@ -32,6 +35,8 @@
 	<script src="js/services/contasService.js"></script>
 	<script src="js/services/uploadcsvService.js"></script>
 	<script src="js/services/lancamentosService.js"></script>
+	<script src="js/services/relatoriosService.js"></script>
+
 	<!-- 
 		Cuidado o JQUERY DEVE SER IMPORTADO PRIMEIRO QUE BOOTSTRAP.JS SE NÂO UM NÂO RECONHECE O OUTRO!
 	-->
@@ -40,6 +45,8 @@
 	<link rel="stylesheet" href="css/todoCss.css">
 	<link rel="stylesheet" href="bibliotecas/bootstrap.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+
 
 </head>
 <!-- O Controller do ANGULAR SÓ ATUA DAQUI PARA FRENTE!! Lá na Index Não-->
@@ -61,6 +68,7 @@
  			<a href="#!/Lancamentos"><li class="form-control btn btn-primary">Lançamentos</li></a>
  			<a href="#!/Contas"><li class="form-control btn btn-primary">Contas</li></a>
  			<a href="#!/UploadCSV"><li class="form-control btn btn-primary">Arquivo CSV</li></a>
+ 			<a href="#!/Relatorios"><li class="form-control btn btn-primary">Relatórios</li></a>
  			<a href="#!/Limites"><li class="form-control btn btn-primary">Limites</li></a>
  			<a href="#!/QuandoPagar"><li class="form-control btn btn-primary">Quando Pagar</li></a>
  			<a href="#!/AdministrarUsuarios" ng-show="UsuarioLogado.Nivel == 'ADMINISTRADOR'"><li class="form-control btn btn-primary">Admin Usuarios</li></a>

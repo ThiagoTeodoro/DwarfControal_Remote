@@ -121,7 +121,8 @@ public abstract class GenericDAO<T> implements Serializable {
 		try {
 			EntityManager em = EntityManagerUtil.getConnection();
 			em.getTransaction().begin();
-			em.remove(obj);
+			Object delete = em.merge(obj);
+			em.remove(delete);
 			em.getTransaction().commit();
 			mensagem = "Objeto removido com sucesso!";
 			em.close();

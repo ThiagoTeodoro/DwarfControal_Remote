@@ -79,6 +79,7 @@ public class UploadCSVController {
 				lancamento.setValor(funcoesNumericas.toFloat(dados[2]));
 				lancamento.setConta(conta);				
 				
+				
 				if(lancamentoDAO.persist(lancamento) != true) {
 					erro = true;
 				}

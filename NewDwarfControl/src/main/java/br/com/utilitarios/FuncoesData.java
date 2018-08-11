@@ -1,9 +1,13 @@
 package br.com.utilitarios;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FuncoesData {
 
 	/**
@@ -58,6 +62,35 @@ public class FuncoesData {
 		retorno.setTime(data);
 		
 		return  retorno;
+		
+	}
+	
+	/**
+	 * Método responsável por converter uma data String de 
+	 * um determinado formato para outro.
+	 * 
+	 * @param data String da data que quer formatar.
+	 * @param formatoAtual formato atual da data que será convertida.
+	 * @param formatoDesejado formato desejado após conversão
+	 * @return data convertida conform Pattern enviado.s
+	 */
+	public String converterDataString(String data, String formatoAtual, String formatoDesejado) {
+		
+		SimpleDateFormat sDFFormatoAtual = new SimpleDateFormat(formatoAtual);
+		SimpleDateFormat sDFFormatoDesejado = new SimpleDateFormat(formatoDesejado);
+		
+		try {
+			
+			Date dataAtual = sDFFormatoAtual.parse(data);
+			
+			return sDFFormatoDesejado.format(dataAtual);
+			
+		} catch (ParseException e) {
+			
+			System.err.println("Erro ao converter a data, Exception : [" + e.getMessage() + "]");
+			
+			return null;
+		}
 		
 	}
 }

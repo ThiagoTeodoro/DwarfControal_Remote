@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import br.com.dao.ContaDAO;
-import br.com.dao.UsuarioDAO;
 import br.com.entitys.Conta;
 import br.com.entitys.Usuario;
 import br.com.objetos.ObjetoMenssagemFrontEnd;

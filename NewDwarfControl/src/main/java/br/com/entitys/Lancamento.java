@@ -8,13 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.ManyToAny;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+
 
 import com.google.gson.Gson;
 
@@ -26,24 +26,39 @@ import com.google.gson.Gson;
  */
 @Entity
 @Table(name="tb_lancamentos")
+@JsonPropertyOrder({
+	"id",
+	"data",
+	"descricao",
+	"Valor",
+	"conta"
+})
 public class Lancamento {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonProperty("id")
 	private long id;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(nullable=false)
+	@JsonProperty("data")
 	private Calendar data;
 	
 	@Column(nullable=false)
+	@JsonProperty("descricao")
 	private String descricao;
 	
 	@Column(nullable=false, precision=10, scale=2)
+	@JsonProperty("Valor")
 	private float Valor;
 	
 	@ManyToOne
+	@JsonProperty("conta")
 	private Conta conta;
+	
+	@javax.persistence.Transient //Transiente é para dizer que o campo não faz parte do banco de dados
+	private float saldo;
 
 	//Getters and Setters
 	
@@ -85,9 +100,16 @@ public class Lancamento {
 
 	public void setValor(float valor) {
 		Valor = valor;
+	}	
+	
+	public float getSaldo() {
+		return saldo;
 	}
-	
-	
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
+
 	//Metodo que retorna 
 	public String toJSON() {
 		return new Gson().toJson(this);
