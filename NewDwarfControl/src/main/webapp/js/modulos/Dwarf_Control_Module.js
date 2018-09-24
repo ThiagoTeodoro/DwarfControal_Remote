@@ -1,1 +1,0 @@
-angular.module('Dwarf_Control', ['ngRoute', 'chart.js']);
