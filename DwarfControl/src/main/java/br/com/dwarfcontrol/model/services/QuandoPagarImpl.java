@@ -189,8 +189,6 @@ public class QuandoPagarImpl implements IQuandoPagarService {
     @Override
     public ResponseEntity<QuandoPagar> salvarDivida(DividaDTO novaDivida, ServletRequest request) {
 
-        this.logger.info(novaDivida.toString());
-
         String token = this.authenticatorService.getValueFromKeyServletRequest("Authorization", request);
         String emailLogado = this.authenticatorService.getEmailToken(token);
 
@@ -200,8 +198,6 @@ public class QuandoPagarImpl implements IQuandoPagarService {
         if(usuarioLogado != null){
 
             QuandoPagar quandoPagar = novaDivida.toQuandoPagar(usuarioLogado);
-
-            this.logger.info(quandoPagar.toString());
 
             //Tentando Salvar quando Pagar.
             QuandoPagar quandoPagarSalvo = this.quandoPagarDAO.save(quandoPagar);
@@ -343,7 +339,6 @@ public class QuandoPagarImpl implements IQuandoPagarService {
     @Override
     public ResponseEntity<Boolean> updateDivida(DividaUpdateDTO quandoPagar, ServletRequest request) {
 
-        this.logger.info(quandoPagar.toString());
 
         //Recuperando Email do Token "Logado"
         String token = this.authenticatorService.getValueFromKeyServletRequest("Authorization", request);
@@ -364,7 +359,6 @@ public class QuandoPagarImpl implements IQuandoPagarService {
                 dividaBancoDeDados.setStatus(quandoPagar.isStatus());
                 //Id não precisa atulizar
 
-                this.logger.info(dividaBancoDeDados.toString());
 
                 //Realizando Update
                 if(this.quandoPagarDAO.save(dividaBancoDeDados) != null){
