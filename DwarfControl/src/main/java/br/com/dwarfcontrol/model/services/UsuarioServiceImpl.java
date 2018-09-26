@@ -1,10 +1,15 @@
 package br.com.dwarfcontrol.model.services;
 
 import br.com.dwarfcontrol.model.DAO.IUsuarioDAO;
+import br.com.dwarfcontrol.model.DTO.ChangeSenhaDTO;
 import br.com.dwarfcontrol.model.entitys.Usuario;
 import br.com.dwarfcontrol.model.DTO.UsuarioDTO;
 import br.com.dwarfcontrol.model.services.interfaces.IUsuarioService;
 import br.com.dwarfcontrol.model.utilities.EncryptionFunctions;
+import jdk.management.resource.NotifyingMeter;
+import jdk.nashorn.internal.parser.Token;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletRequest;
+import javax.validation.constraints.Email;
 import java.util.List;
 
 
@@ -26,6 +32,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private AuthenticatorServiceImpl authenticatorService;
 
     private EncryptionFunctions encryptionFunctions = new EncryptionFunctions();
+    private Logger logger = LoggerFactory.getLogger(UsuarioServiceImpl.class);
+
 
     /**
      * Método responsável por salvar um novo usuário no Banco de Dados
@@ -422,6 +430,155 @@ public class UsuarioServiceImpl implements IUsuarioService {
             return new ResponseEntity<Boolean>(HttpStatus.FORBIDDEN);
 
         }
+
+    }
+
+    /**
+     * Método que retorna os dados do usuário loogado ao front end sem a presença da senha
+     *
+     * @param request
+     * @return
+     */
+    @Override
+    public ResponseEntity<Usuario> getDadosUsuarioToken(ServletRequest request) {
+
+        //Recuperando Token da requisição para verificar para encontrar o usuário
+        String token = this.authenticatorService.getValueFromKeyServletRequest("Authorization", request);
+
+        //Recuperando Email do Token
+        String emailLogado = this.authenticatorService.getEmailToken(token);
+
+        Usuario usuarioLogado = this.usuarioDAO.findByEmail(emailLogado);
+
+        if(usuarioLogado != null){
+
+            //Removendo a Senha
+            usuarioLogado.setSenha("");
+
+            return new ResponseEntity<Usuario>(usuarioLogado, HttpStatus.OK);
+
+        } else {
+
+            //Não encontramos o usuário
+            logger.error("Não foi encontrado nenhum usuário para esse Token de requisição!");
+            return new ResponseEntity<Usuario>(HttpStatus.NO_CONTENT);
+
+        }
+
+    }
+
+    /**
+     * Método responsável por realizar o update do unico campo possivel para
+     * o usuário, alterar seus proprios daods, no caso somente o nome.
+     *
+     * @param newNome
+     * @param request
+     * @return
+     */
+    @Override
+    public ResponseEntity<Boolean> updateNomeUsuarioTokenLogado(String newNome, ServletRequest request) {
+
+        String token = authenticatorService.getValueFromKeyServletRequest("Authorization", request);
+
+        String emailToken = authenticatorService.getEmailToken(token);
+
+        Usuario usuarioLogado = usuarioDAO.findByEmail(emailToken);
+
+        if(usuarioLogado != null){
+
+            //Atulizando o Campo permitido que é o nome
+            usuarioLogado.setNome(newNome);
+
+            //Atuliznado usuarioLogado no Banco de Dados
+            if(usuarioDAO.save(usuarioLogado) != null){
+
+                return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+
+            } else {
+
+                //Não encontramos o usuário
+                logger.error("Erro ao tentar atualizar os dados do Usuário no Banco de dados!");
+                return new ResponseEntity<Boolean>(HttpStatus.EXPECTATION_FAILED);
+
+            }
+
+        } else {
+
+            //Não encontramos o usuário
+            logger.error("Não foi encontrado nenhum usuário para esse Token de requisição!");
+            return new ResponseEntity<Boolean>(HttpStatus.NO_CONTENT);
+
+        }
+
+    }
+
+    /**
+     * Serviço para troca de senha.
+     *
+     * Verfica se a senha antiga confere com a atual no banco.
+     * Verifica se a nova senha e sua repetição são iguais
+     * se tudo isso for valido ele realiza alteração da senha.
+     *
+     * @param changeSenha
+     * @param request
+     * @return
+     */
+    @Override
+    public ResponseEntity<Boolean> updateSenhaUsuarioTokenLogado(ChangeSenhaDTO changeSenha, ServletRequest request) {
+
+        String token = authenticatorService.getValueFromKeyServletRequest("Authorization", request);
+
+        String emailToken = authenticatorService.getEmailToken(token);
+
+        Usuario usuarioLogado = usuarioDAO.findByEmail(emailToken);
+
+        if(usuarioLogado != null){
+
+            //Criptografando senha antiga para ver se tá igual
+            String senhaAntiga = new EncryptionFunctions().toMD5(changeSenha.getSenhaAntiga());
+
+            if(senhaAntiga.equals(usuarioLogado.getSenha())){
+
+                if(changeSenha.getSenhaNova().equals(changeSenha.getSenhaRepeti())){
+
+                    //Tudo certo podemos tentar atualizar a senha no Banco de Dados
+                    String senhaNovaMd5 = new EncryptionFunctions().toMD5(changeSenha.getSenhaNova());
+                    usuarioLogado.setSenha(senhaNovaMd5);
+
+                    if(usuarioDAO.save(usuarioLogado) != null){
+
+                        //Senha gravada!
+                        return new ResponseEntity<Boolean>(Boolean.TRUE,HttpStatus.OK);
+
+                    } else {
+
+                        logger.error("Houve um erro ao tentar gravar a nova senha no Banco de Dados");
+                        return new ResponseEntity<Boolean>(HttpStatus.EXPECTATION_FAILED);
+
+                    }
+
+                } else {
+
+                    logger.error("A senha e a sua repetição não conferem!");
+                    return new ResponseEntity<Boolean>(HttpStatus.PRECONDITION_FAILED);
+
+                }
+
+            } else {
+
+                logger.error("A senha antiga e a senha cadastrada no banco de dados não conferem!");
+                return new ResponseEntity<Boolean>(HttpStatus.PRECONDITION_FAILED);
+
+            }
+
+        } else {
+
+            //Não encontramos o usuário
+            logger.error("Não foi encontrado nenhum usuário para esse Token de requisição!");
+            return new ResponseEntity<Boolean>(HttpStatus.NO_CONTENT);
+
+        }
+
 
     }
 

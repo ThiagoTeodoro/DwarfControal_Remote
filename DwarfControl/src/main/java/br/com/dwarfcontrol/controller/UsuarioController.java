@@ -1,6 +1,7 @@
 package br.com.dwarfcontrol.controller;
 
 
+import br.com.dwarfcontrol.model.DTO.ChangeSenhaDTO;
 import br.com.dwarfcontrol.model.entitys.Usuario;
 import br.com.dwarfcontrol.model.DTO.UsuarioDTO;
 import br.com.dwarfcontrol.model.services.UsuarioServiceImpl;
@@ -164,6 +165,60 @@ public class UsuarioController {
     public ResponseEntity<Boolean> enableUsuario(@RequestBody int id, ServletRequest request){
 
         return this.usuarioService.enableUsuario(id, request);
+
+    }
+
+
+    /**
+     * Serviço responsável por devolver os dados do usuário logado sem a senha
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(
+            value = "/usuario",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Usuario> getDadosUsuarioToken(ServletRequest request){
+
+        return this.usuarioService.getDadosUsuarioToken(request);
+
+    }
+
+    /**
+     * Serviço responsável por atulizar o unico campo possivel do usuário pelo proprio
+     * usuário no caso o Nome.
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(
+            value = "/usuario/update",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Boolean> updateDadosUsuario(@RequestBody String newNome, ServletRequest request){
+
+        return this.usuarioService.updateNomeUsuarioTokenLogado(newNome, request);
+
+    }
+
+
+    /**
+     * Serviço responsável por atulizar a senha do Usuário Logado
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(
+            value = "/usuario/update/passwd",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Boolean> updateSenha(@RequestBody ChangeSenhaDTO changeSenhaDTO, ServletRequest request){
+
+        return this.usuarioService.updateSenhaUsuarioTokenLogado(changeSenhaDTO, request);
 
     }
 

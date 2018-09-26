@@ -8,7 +8,6 @@ import br.com.dwarfcontrol.model.entitys.QuandoPagar;
 import br.com.dwarfcontrol.model.entitys.Usuario;
 import br.com.dwarfcontrol.model.services.interfaces.IQuandoPagarService;
 import br.com.dwarfcontrol.model.utilities.DateFunctions;
-import org.omg.IOP.TAG_ALTERNATE_IIOP_ADDRESS;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

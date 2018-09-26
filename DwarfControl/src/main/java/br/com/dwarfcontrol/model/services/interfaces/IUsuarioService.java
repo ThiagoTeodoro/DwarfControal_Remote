@@ -1,5 +1,6 @@
 package br.com.dwarfcontrol.model.services.interfaces;
 
+import br.com.dwarfcontrol.model.DTO.ChangeSenhaDTO;
 import br.com.dwarfcontrol.model.entitys.Usuario;
 import br.com.dwarfcontrol.model.DTO.UsuarioDTO;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +68,39 @@ public interface IUsuarioService {
      * @return
      */
     ResponseEntity<Boolean> enableUsuario(int id, ServletRequest request);
+
+    /**
+     * Método que retorna os dados do usuário loogado ao front end sem a presença da senha
+     *
+     * @param request
+     * @return
+     */
+    ResponseEntity<Usuario> getDadosUsuarioToken(ServletRequest request);
+
+
+    /**
+     * Método responsável por realizar o update do unico campo possivel para
+     * o usuário, alterar seus proprios daods, no caso somente o nome.
+     *
+     * @param newNome
+     * @param request
+     * @return
+     */
+    ResponseEntity<Boolean> updateNomeUsuarioTokenLogado(String newNome, ServletRequest request);
+
+
+    /**
+     * Serviço para troca de senha.
+     *
+     * Verfica se a senha antiga confere com a atual no banco.
+     * Verifica se a nova senha e sua repetição são iguais
+     * se tudo isso for valido ele realiza alteração da senha.
+     *
+     * @param changeSenha
+     * @param request
+     * @return
+     */
+    ResponseEntity<Boolean> updateSenhaUsuarioTokenLogado(ChangeSenhaDTO changeSenha, ServletRequest request);
 
 
 }
