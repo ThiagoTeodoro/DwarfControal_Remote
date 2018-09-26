@@ -6,8 +6,6 @@ import br.com.dwarfcontrol.model.entitys.Usuario;
 import br.com.dwarfcontrol.model.DTO.UsuarioDTO;
 import br.com.dwarfcontrol.model.services.interfaces.IUsuarioService;
 import br.com.dwarfcontrol.model.utilities.EncryptionFunctions;
-import jdk.management.resource.NotifyingMeter;
-import jdk.nashorn.internal.parser.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
