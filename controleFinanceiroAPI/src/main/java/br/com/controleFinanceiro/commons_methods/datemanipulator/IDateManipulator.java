@@ -1,4 +1,4 @@
-package br.com.datemanipulator;
+package br.com.controleFinanceiro.commons_methods.datemanipulator;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -7,21 +7,21 @@ import java.util.List;
 public interface IDateManipulator {
 
 	/**
-	 * Método responsável por entregar a data de hoje.
+	 * Mï¿½todo responsï¿½vel por entregar a data de hoje.
 	 * 
 	 * @return
 	 */
 	Date todayDate();
 
 	/**
-	 * Método responsável por entregar a data de hoje.
+	 * Mï¿½todo responsï¿½vel por entregar a data de hoje.
 	 * 
 	 * @return
 	 */
 	Calendar todayCalendar();
 
 	/**
-	 * Método responsável por converter um tipo Date em uma String conforme pattern
+	 * Mï¿½todo responsï¿½vel por converter um tipo Date em uma String conforme pattern
 	 * enviado.
 	 * 
 	 * @param date
@@ -33,9 +33,9 @@ public interface IDateManipulator {
 	String dateToString(Date date, DatePatterns pattern);
 
 	/**
-	 * Método responsável por converter um tipo Date em uma String conforme pattern
-	 * enviado, esse método permite a passagem de uma string pattern customizavel
-	 * como parâmetro.
+	 * Mï¿½todo responsï¿½vel por converter um tipo Date em uma String conforme pattern
+	 * enviado, esse mï¿½todo permite a passagem de uma string pattern customizavel
+	 * como parï¿½metro.
 	 * 
 	 * @param date
 	 *            Data para ser convertida em String
@@ -46,7 +46,7 @@ public interface IDateManipulator {
 	String dateToString(Date date, String pattern);
 
 	/**
-	 * Método responsável por transformar uma data tipo String em uma data tipo
+	 * Mï¿½todo responsï¿½vel por transformar uma data tipo String em uma data tipo
 	 * Date.
 	 * 
 	 * @param data
@@ -58,8 +58,8 @@ public interface IDateManipulator {
 	Date stringToDate(String data, DatePatterns pattern);
 
 	/**
-	 * Método responsável por transformar uma data tipo String em uma data tipo
-	 * Date, esse método permite a passgem de um String customizavem como pattern.
+	 * Mï¿½todo responsï¿½vel por transformar uma data tipo String em uma data tipo
+	 * Date, esse mï¿½todo permite a passgem de um String customizavem como pattern.
 	 * 
 	 * @param data
 	 *            Data tipo String
@@ -70,47 +70,47 @@ public interface IDateManipulator {
 	Date stringToDate(String data, String pattern);
 
 	/**
-	 * Método responsável por converter um date em um Calendar.
+	 * Mï¿½todo responsï¿½vel por converter um date em um Calendar.
 	 * 
 	 * @return
 	 */
 	Calendar dateToCalendar(Date date);
 
 	/**
-	 * Método responsável por adicionar dias úteis conforme parametro a uma data,
-	 * como dia util a função entendi dias que não são feriados e não sabados e nem
+	 * Mï¿½todo responsï¿½vel por adicionar dias ï¿½teis conforme parametro a uma data,
+	 * como dia util a funï¿½ï¿½o entendi dias que nï¿½o sï¿½o feriados e nï¿½o sabados e nem
 	 * domingos.
 	 * 
-	 * Caso seja passado 0 como parametro de numero de dias para adicionar a função
-	 * irá verificar se a data enviada é dia util e se não for vai adicionar dias
-	 * até o proximo dia util aparecer, se já for dia util ela não fará nenhuma
-	 * adição.
+	 * Caso seja passado 0 como parametro de numero de dias para adicionar a funï¿½ï¿½o
+	 * irï¿½ verificar se a data enviada ï¿½ dia util e se nï¿½o for vai adicionar dias
+	 * atï¿½ o proximo dia util aparecer, se jï¿½ for dia util ela nï¿½o farï¿½ nenhuma
+	 * adiï¿½ï¿½o.
 	 * 
-	 * A lista de de feriados é importante para definição dos casos especias de dias
+	 * A lista de de feriados ï¿½ importante para definiï¿½ï¿½o dos casos especias de dias
 	 * uteis.
 	 * 
 	 * @param data
 	 *            data a ser checada/adicionada
 	 * @param numberOfDayAdd
-	 *            numero de dias UTEIS que será adicionado o parâmetro 0 apenas
-	 *            verifica a data enviada se a mesma é útil ou não.
+	 *            numero de dias UTEIS que serï¿½ adicionado o parï¿½metro 0 apenas
+	 *            verifica a data enviada se a mesma ï¿½ ï¿½til ou nï¿½o.
 	 * @param holidays
-	 *            lista de feriados para levar em consideração
+	 *            lista de feriados para levar em consideraï¿½ï¿½o
 	 * @return
 	 */
 	Date dayUtilAdd(Date data, int numberOfDayAdd, List<Date> holidays);
 
-	// Supressão do Metodo Anterior para casos em que ele não passar a lista de
+	// Supressï¿½o do Metodo Anterior para casos em que ele nï¿½o passar a lista de
 	// feriados
 	Date dayUtilAdd(Date data, int numberOfDayAdd);
 
 	/**
-	 * Metodo responsável por verificar se uma data está vencida ou não.
+	 * Metodo responsï¿½vel por verificar se uma data estï¿½ vencida ou nï¿½o.
 	 * 
 	 * O metodo retorna true caso a conta esteja vencida
 	 *
 	 * @param dataReferencia
-	 *            a data que vamos usar para comparar se estar vencido ou não,
+	 *            a data que vamos usar para comparar se estar vencido ou nï¿½o,
 	 *            geralmente passamos a data atual (now).
 	 * @param dataVencimento
 	 *            data que irar vencer.

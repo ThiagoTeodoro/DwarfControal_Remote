@@ -1,4 +1,4 @@
-package br.com.encryption;
+package br.com.controleFinanceiro.commons_methods.encryption;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -13,8 +13,8 @@ public class EncryptionManipulatorImpl implements IEncryptionManipulator {
 	private static String KEYCOMPLETE = "636f6d6d6f6e735f6d6574686f6473";
 
 	/**
-	 * Método responsável por converter uma String para 
-	 * Base64. Encriptação basíca de baixa segurança.
+	 * Mï¿½todo responsï¿½vel por converter uma String para 
+	 * Base64. Encriptaï¿½ï¿½o basï¿½ca de baixa seguranï¿½a.
 	 * 
 	 * @param str String a ser convertida
 	 * @return
@@ -27,14 +27,14 @@ public class EncryptionManipulatorImpl implements IEncryptionManipulator {
 		
 		String strEncoder = Base64.getEncoder().encodeToString(strOriginal.getBytes());
 
-		LOGGER.debug(String.format("String após 'Encripitação' : [%s]", strEncoder));
+		LOGGER.debug(String.format("String apï¿½s 'Encripitaï¿½ï¿½o' : [%s]", strEncoder));
 		
 		return strEncoder;
 	}
 
 	
 	/**
-	 * Método responsável por decodificar uma String em
+	 * Mï¿½todo responsï¿½vel por decodificar uma String em
 	 * Base64. 
 	 * 
 	 * @param strBase64
@@ -42,7 +42,7 @@ public class EncryptionManipulatorImpl implements IEncryptionManipulator {
 	 */
 	public String decodeBase64(String strBase64) {
 		
-		LOGGER.debug(String.format("String recebida para decodificação : [%s]", strBase64));
+		LOGGER.debug(String.format("String recebida para decodificaï¿½ï¿½o : [%s]", strBase64));
 		
 		String strToDecode = strBase64;
 		
@@ -57,7 +57,7 @@ public class EncryptionManipulatorImpl implements IEncryptionManipulator {
 
 
 	/**
-	 * Método responsável por gerar um MD5 da String enviada.
+	 * Mï¿½todo responsï¿½vel por gerar um MD5 da String enviada.
 	 * 
 	 * @param str
 	 * @return

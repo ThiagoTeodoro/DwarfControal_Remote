@@ -1,4 +1,4 @@
-package br.com.clientresthttpjson;
+package br.com.controleFinanceiro.commons_methods.clientresthttpjson;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -12,7 +12,7 @@ import java.security.cert.X509Certificate;
 import org.apache.log4j.Logger;
 
 /**
- * Classe que iguinora a cadeia de validação 
+ * Classe que iguinora a cadeia de validaï¿½ï¿½o 
  * de certificado Java.
  *
  */
@@ -24,7 +24,7 @@ public class IguinoreHttpsJava {
 	
 	/**
 	 * Metodo que cria uma cadeia SSL para que o Java 
-	 * não use a nativa da JDK, fazendo com que as valiações
+	 * nï¿½o use a nativa da JDK, fazendo com que as valiaï¿½ï¿½es
 	 * de SSL fiquem igonoradas. 
 	 */
 	public void ignorarCertificadosJava() {
@@ -62,7 +62,7 @@ public class IguinoreHttpsJava {
 		
         } catch (Exception e) {
         	
-        	logger.error(String.format(">>> Erro ao tentar criar Cadeia de SSL desabilitando validação do Java. Exception : [%s]." + e.getMessage()));
+        	logger.error(String.format(">>> Erro ao tentar criar Cadeia de SSL desabilitando validaï¿½ï¿½o do Java. Exception : [%s]." + e.getMessage()));
         	
         }
 		

@@ -1,16 +1,16 @@
-package br.com.datemanipulator;
+package br.com.controleFinanceiro.commons_methods.datemanipulator;
 
 /**
- * Enum para auxiliar a utilzação dos pattern de Data
+ * Enum para auxiliar a utilzaï¿½ï¿½o dos pattern de Data
  * 
- * Abreviações e patterns baseado na Código ISO639-2
+ * Abreviaï¿½ï¿½es e patterns baseado na Cï¿½digo ISO639-2
  * 
  * @author Thiago Teodoro Rodrigues
  *
  */
 public enum DatePatterns {
 	
-	//Código ISO639-2 por país 
+	//Cï¿½digo ISO639-2 por paï¿½s 
 	
 	AL("Albania","yyyy-MM-dd"),
 	AE("United Arab Emirates","dd/MM/yyyy"),

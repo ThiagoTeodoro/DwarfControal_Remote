@@ -1,10 +1,10 @@
-package br.com.encryption;
+package br.com.controleFinanceiro.commons_methods.encryption;
 
 public interface IEncryptionManipulator {
 	
 	/**
-	 * Método responsável por converter uma String para 
-	 * Base64. Encriptação basíca de baixa segurança.
+	 * Mï¿½todo responsï¿½vel por converter uma String para 
+	 * Base64. Encriptaï¿½ï¿½o basï¿½ca de baixa seguranï¿½a.
 	 * 
 	 * @param str String a ser convertida
 	 * @return
@@ -12,7 +12,7 @@ public interface IEncryptionManipulator {
 	String toBase64(String str);
 	
 	/**
-	 * Método responsável por decodificar uma String em
+	 * Mï¿½todo responsï¿½vel por decodificar uma String em
 	 * Base64. 
 	 * 
 	 * @param strBase64
@@ -22,7 +22,7 @@ public interface IEncryptionManipulator {
 	
 	
 	/**
-	 * Método responsável por gerar um MD5 da String enviada.
+	 * Mï¿½todo responsï¿½vel por gerar um MD5 da String enviada.
 	 * 
 	 * @param str
 	 * @return

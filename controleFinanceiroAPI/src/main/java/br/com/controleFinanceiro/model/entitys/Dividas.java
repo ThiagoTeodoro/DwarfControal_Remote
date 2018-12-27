@@ -15,8 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import br.com.controleFinanceiro.commons_methods.datemanipulator.DateManipulatorImpl;
 import br.com.controleFinanceiro.model.DTO.DividaDTO;
-import br.com.datemanipulator.DateManipulatorImpl;
+
 
 @Entity
 @Table(name="tb_dividas")

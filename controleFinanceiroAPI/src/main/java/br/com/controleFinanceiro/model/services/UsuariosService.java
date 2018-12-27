@@ -11,11 +11,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.controleFinanceiro.commons_methods.encryption.EncryptionManipulatorImpl;
 import br.com.controleFinanceiro.model.DAOs.interfaces.IUsuarioDAO;
 import br.com.controleFinanceiro.model.DTO.ChangeSenhaDTO;
 import br.com.controleFinanceiro.model.entitys.Usuarios;
 import br.com.controleFinanceiro.model.services.interfaces.IUsuariosService;
-import br.com.encryption.EncryptionManipulatorImpl;
+
 
 @Service
 public class UsuariosService implements IUsuariosService{

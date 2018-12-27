@@ -10,12 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.controleFinanceiro.autentication.ManagerToken;
+import br.com.controleFinanceiro.commons_methods.encryption.EncryptionManipulatorImpl;
 import br.com.controleFinanceiro.model.DAOs.interfaces.IUsuarioDAO;
 import br.com.controleFinanceiro.model.DTO.LoginDTO;
 import br.com.controleFinanceiro.model.DTO.TokenDTO;
 import br.com.controleFinanceiro.model.entitys.Usuarios;
 import br.com.controleFinanceiro.model.services.interfaces.IAutenticationService;
-import br.com.encryption.EncryptionManipulatorImpl;
 import io.jsonwebtoken.Claims;
 
 @Service

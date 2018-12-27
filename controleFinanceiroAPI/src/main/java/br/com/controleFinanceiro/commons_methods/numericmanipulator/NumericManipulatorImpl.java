@@ -1,4 +1,4 @@
-package br.com.numericmanipulator;
+package br.com.controleFinanceiro.commons_methods.numericmanipulator;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -10,7 +10,7 @@ public class NumericManipulatorImpl implements INumericManipulator {
 	private static Logger logger = Logger.getLogger(NumericManipulatorImpl.class);
 
 	/**
-	 * Método responsável por converter uma String em um Double.
+	 * Mï¿½todo responsï¿½vel por converter uma String em um Double.
 	 * 
 	 * @param numeric
 	 * @return
@@ -19,7 +19,7 @@ public class NumericManipulatorImpl implements INumericManipulator {
 
 		try {
 
-			logger.debug(String.format("Parâmetro de entrada da função stringToDouble : [%s]", numeric));
+			logger.debug(String.format("Parï¿½metro de entrada da funï¿½ï¿½o stringToDouble : [%s]", numeric));
 
 			String strN = numeric.replace("R", "").replace("$", "").trim();
 
@@ -34,13 +34,13 @@ public class NumericManipulatorImpl implements INumericManipulator {
 				n = strN.replace(".", "").replace(",", ".");
 			}
 
-			logger.debug(String.format("Retorno da função stringToDouble : [%s].", new Double(n)));
+			logger.debug(String.format("Retorno da funï¿½ï¿½o stringToDouble : [%s].", new Double(n)));
 
 			return new Double(n);
 
 		} catch (Exception e) {
 
-			logger.error(String.format("Houve um erro ao tentar realizar conversão de String para Double! Mensagem [%s]", e.getMessage()));
+			logger.error(String.format("Houve um erro ao tentar realizar conversï¿½o de String para Double! Mensagem [%s]", e.getMessage()));
 			e.printStackTrace();
 			return 0.0;
 
@@ -48,31 +48,31 @@ public class NumericManipulatorImpl implements INumericManipulator {
 	}
 
 	/**
-	 * Método responsável por gerar uma exibição do tipo moeda do numero enviado.
+	 * Mï¿½todo responsï¿½vel por gerar uma exibiï¿½ï¿½o do tipo moeda do numero enviado.
 	 * 
 	 * @param numeric
-	 *            numero a ser formatado para exibição do tipo currency tipo 90.53
+	 *            numero a ser formatado para exibiï¿½ï¿½o do tipo currency tipo 90.53
 	 * @param locale
-	 *            locale para qual será a formatação
+	 *            locale para qual serï¿½ a formataï¿½ï¿½o
 	 * @return Ex: R$ 90,53
 	 */
 	public String formaterInCurrencyExhibition(Double numeric, Locale locale) {
 
 		try {
 
-			logger.debug(String.format("Parâmetros de entrada da função formaterInCurrencyExhibition : numeric [%s], locale [%s]", numeric,	locale));
+			logger.debug(String.format("Parï¿½metros de entrada da funï¿½ï¿½o formaterInCurrencyExhibition : numeric [%s], locale [%s]", numeric,	locale));
 
 			Double numeroFormatar = numeric;
 
 			NumberFormat formatador = NumberFormat.getCurrencyInstance(locale);
 
-			logger.debug(String.format("Retorno da função formaterInCurrencyExhibition : [%s]",	formatador.format(numeroFormatar)));
+			logger.debug(String.format("Retorno da funï¿½ï¿½o formaterInCurrencyExhibition : [%s]",	formatador.format(numeroFormatar)));
 
 			return formatador.format(numeroFormatar);
 
 		} catch (Exception e) {
 
-			logger.error(String.format("Houve um erro ao tentar realizar conversão para exibição no formato moeda! Mensagem [%s]", e.getMessage()));
+			logger.error(String.format("Houve um erro ao tentar realizar conversï¿½o para exibiï¿½ï¿½o no formato moeda! Mensagem [%s]", e.getMessage()));
 			e.printStackTrace();
 			return "";
 
