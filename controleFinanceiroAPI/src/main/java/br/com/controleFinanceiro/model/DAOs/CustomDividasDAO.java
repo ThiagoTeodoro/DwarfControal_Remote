@@ -37,7 +37,7 @@ public class CustomDividasDAO {
 		
 		this.logger.info("Obtendo somatório total do ano mês " + ano + "-" + mes + " do banco de dados em relação as dividas!");
 		
-		String hql = "SELECT SUM(valor) FROM " + tabelaDividas + " WHERE usuario_id = " + idUsuario + " AND MONTH(data_vencimento) = " + mes + " AND YEAR(data_vencimento) = " + ano;		
+		String hql = "SELECT SUM(valor) FROM " + tabelaDividas + " WHERE usuario_id = " + idUsuario + " AND MONTH(data_vencimento) = '" + mes + "' AND YEAR(data_vencimento) = '" + ano + "'";		
 		Query query = (Query) em.createQuery(hql);
 		
 		double somatorio = 0.00;
